@@ -1,6 +1,6 @@
 import streamlit as st
 
-
+# Takes in a pandas table
 def get_project(table):
     st.dataframe(table)
     index = st.selectbox("Index:", range(len(table)))
@@ -13,7 +13,7 @@ def get_project(table):
 
     return project_title, url
 
-
+# Writes the result as a text area
 def show_intructions(project_name, instructions_text):
     st.write(f"Instructions for {project_name}")
     st.text_area("Project Instructions", instructions_text, height=1000, label_visibility="collapsed")

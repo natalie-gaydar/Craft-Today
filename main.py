@@ -38,7 +38,7 @@ if st.session_state.show_table:
         st.write(f"Selected project: {project_title}")
         
         try:
-            instructions_text = scrape_and_analyze(project_title, url)  # No asyncio.run needed
+            instructions_text = scrape_and_analyze(url)  # No asyncio.run needed
             show_intructions(project_title, instructions_text)
         except Exception as e:
             st.error(f"Error fetching instructions: {str(e)}")

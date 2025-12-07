@@ -6,7 +6,7 @@ import streamlit as st
 def load_data():
     return pd.read_csv(r"data\projects_craft.csv")
 
-
+# Takes in a pandas dataframe as an argument
 def get_by_user_input(craft_data):
     # First remove duplicate projects
     craft_data = craft_data.drop_duplicates(subset=['Project-Title'], keep='first')

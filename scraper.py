@@ -1,3 +1,21 @@
+"""Web scraping and AI analysis module for extracting craft project instructions.
+
+This module handles scraping content from Instructables URLs using Playwright
+and analyzing the content with OpenAI to extract formatted materials and instructions.
+"""
+
+"""Web scraping and AI analysis module for extracting craft project instructions.
+
+This module handles scraping content from Instructables URLs using Playwright
+and analyzing the content with OpenAI to extract formatted materials and instructions.
+"""
+
+"""Web scraping and AI analysis module for extracting craft project instructions.
+
+This module handles scraping content from Instructables URLs using Playwright
+and analyzing the content with OpenAI to extract formatted materials and instructions.
+"""
+
 import streamlit as st
 from playwright.sync_api import sync_playwright  
 import re
@@ -5,6 +23,7 @@ from openai import OpenAI
 from keys import OPENAI_API_KEY
 
 
+# Main web scraping function that extracts readable text from Instructables URLs
 def scrape_URL_for_text(url):
     timeout = 60000
     
@@ -82,7 +101,10 @@ def scrape_URL_for_text(url):
             browser.close()
             
             return readable_text
-def extract_materials_and_instructions(text_content, project_title=""):
+
+
+# AI analysis function that uses OpenAI to format scraped content into materials and instructions
+def extract_materials_and_instructions(text_content):
     # Initialize OpenAI client (make sure to set your API key)
     client = OpenAI(
         api_key=OPENAI_API_KEY  # Set this environment variable
@@ -127,7 +149,8 @@ def extract_materials_and_instructions(text_content, project_title=""):
         return f"ERROR: {e}"
 
 
-def scrape_and_analyze(project_title, url):
+# Orchestrator function that combines web scraping and AI analysis for complete project processing
+def scrape_and_analyze(url):
     # Scrape the webpage for text content
     try:
         text_content = scrape_URL_for_text(url)
@@ -136,7 +159,7 @@ def scrape_and_analyze(project_title, url):
             return "ERROR: No text content could be scraped from the webpage"
             
         # Extract materials and instructions using AI
-        analysis_result = extract_materials_and_instructions(text_content, project_title)
+        analysis_result = extract_materials_and_instructions(text_content)
 
         return analysis_result
         
